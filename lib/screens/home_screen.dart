@@ -113,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
             floating: true,
             snap: true,
             pinned: true,
-            expandedHeight: 120.0,
+            expandedHeight: 90.0,
 //            leading option
             leading: IconButton(
               icon: Icon(Icons.settings),
