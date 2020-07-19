@@ -14,6 +14,54 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
+  _buildExpenses() {
+    List<Widget> expensesList = [];
+    widget.category.expenses.forEach((Expense expense) {
+      expensesList.add(Container(
+        alignment: Alignment.center,
+        margin: EdgeInsets.all(10.0),
+        height: 80.0,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black38,
+              offset: Offset(0, 2),
+              blurRadius: 6.0,
+            ),
+          ],
+        ),
+        child: Padding(
+          padding:  EdgeInsets.all(30.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                expense.name,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
+                ),
+              ),
+              Text(
+                '\$'+expense.cost.toStringAsFixed(2),
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 20.0,
+                  color: Colors.red,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ));
+    });
+    return Column(
+      children: expensesList,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     //create var for Radial progress bar
@@ -74,6 +122,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 ),
               ),
             ),
+            _buildExpenses(),
           ],
         ),
       ),
